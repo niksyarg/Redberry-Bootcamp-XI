@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootcamp - Learning Platform</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <div class="logo">
+                <img src="assets/Logo.svg" alt="Logo">
+                <span>Bootcamp</span>
+            </div>
+            <div class="header-right">
+                <a href="#" class="nav-link"><img src="./assets/Nav icon.svg" alt="browser"> Browse Courses</a>
+                <a href="#" id="enrolled-link" class="nav-link"><img src="./assets/books icon.svg" alt="courses"> Enrolled Courses</a>
+                
+                <button class="btn btn-login">Log In</button>
+                <button class="btn btn-signup">Sign Up</button>
+                <img src="./assets/Avatar.svg" alt="Profile" class="profile-icon">
+            </div>
+        </header>
+
+        <div class="hero-slider">
+            <div class="slides-container">
+                <div class="slide active">
+                    <img src="./assets/picture 1.png" alt="Start learning" class="slide-img">
+                    <div class="slide-content">
+                        <h1>Start learning something new today</h1>
+                        <p>Explore a wide range of expert-led courses in design, development, business, and more. Find the skills you need to grow your career and learn at your own pace.</p>
+                        <button class="btn-hero">Browse Courses</button>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="./assets/picture 2.png" alt="Pick up" class="slide-img">
+                    <div class="slide-content">
+                        <h1>Pick up where you left off</h1>
+                        <p>Your learning journey is already in progress. Continue your enrolled courses, track your progress, and stay on track toward completing your goals.</p>
+                        <button class="btn-hero">Start Learning</button>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="./assets/picture 3.png" alt="Learn together" class="slide-img">
+                    <div class="slide-content">
+                        <h1>Learn together, grow faster</h1>
+                        <button class="btn-hero">Learn More</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slider-controls">
+                <div class="dots">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+                <div class="arrows">
+                    <button id="prev"><i class="fas fa-chevron-left"></i></button>
+                    <button id="next"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <section class="courses-section">
+            <div class="section-header">
+                <h2>Start Learning Today</h2>
+                <p>Choose from our most popular courses and begin your journey</p>
+            </div>
+            
+            <div class="course-grid">
+                <div class="course-card">
+                    <img src="./assets/Frame 13.svg" alt="Course Preview" class="card-banner">
+                    <div class="card-body">
+                        <div class="meta"><span>Merijn Magee</span> <span><img src="./assets/Star.svg"> 4.9</span></div>
+                        <h3>Advanced React & TypeScript Development</h3>
+                        <p>Master modern patterns, hooks, and TypeScript integration for scalable web apps.</p>
+                        <div class="card-footer">
+                            <span class="price">Starting from <span class="amount">$299</span></span>
+                            <button class="btn-details">Details</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <img src="./assets/Frame 13.svg" alt="Course Preview" class="card-banner">
+                    <div class="card-body">
+                        <div class="meta"><span>Merijn Magee</span> <span><img src="./assets/Star.svg"> 4.9</span></div>
+                        <h3>Advanced React & TypeScript Development</h3>
+                        <p>Master modern patterns, hooks, and TypeScript integration for scalable web apps.</p>
+                        <div class="card-footer">
+                            <span class="price">Starting from <span class="amount">$299</span></span>
+                            <button class="btn-details">Details</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <img src="./assets/Frame 13.svg" alt="Course Preview" class="card-banner">
+                    <div class="card-body">
+                        <div class="meta"><span>Merijn Magee</span> <span><img src="./assets/Star.svg"> 4.9</span></div>
+                        <h3>Advanced React & TypeScript Development</h3>
+                        <p>Master modern patterns, hooks, and TypeScript integration for scalable web apps.</p>
+                        <div class="card-footer">
+                            <span class="price">Starting from <span class="amount">$299</span></span>
+                            <button class="btn-details">Details</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="locked-section">
+            <div class="section-header">
+                <div class="header-main-row">
+                    <h2>Continue Learning</h2>
+                    <a href="#" class="see-all">See All</a>
+                </div>
+                <p class="subtitle">Pick up where you left off</p>
+            </div>
+
+            <div class="lock-container">
+    <div class="blurred-content">
+        <img src="./assets/Frame 315.svg" alt="Background pattern" class="bg-pattern">
+    </div>
+
+    <div class="lock-overlay">
+        <div class="lock-circle">
+            <img src="./assets/Frame 302.svg" alt="Lock" class="lock-icon">
+        </div>
+        <p>Sign in to track your learning progress</p>
+        <button class="btn-login-large">Log In</button>
+    </div>
+</div>
+        </section>
+
+        <footer>
+            <div class="footer-main">
+                <div class="footer-info">
+                    <img src="assets/Logo.svg" alt="Footer Logo" class="footer-logo">
+                    <p>Learn new skills and advance your career with our expert-led courses.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="col">
+                        <h4>Explore</h4>
+                        <a href="#">Enrolled Courses</a>
+                        <a href="#">Browse Courses</a>
+                    </div>
+                    <div class="col">
+                        <h4>Account</h4>
+                        <a href="#">My Profile</a>
+                    </div>
+                    <div class="col">
+                        <h4>Contact</h4>
+                        <a href="#"><img src="./assets/Icon_email.svg" alt="Email"> contact@company.com</a>
+                        <a href="#"><img src="./assets/Icon_phone.svg" alt="Phone"> (+995) 555 111 222</a>
+                        <a href="#"><img src="./assets/Icon_map.svg" alt="Location"> Aghmashenebeli St.115</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="copyright">Copyright © 2026 Redberry International</div>
+                <div class="legal-links">
+                    <span>All Rights Reserved</span> | 
+                    <a href="#">Terms and Conditions</a> | 
+                    <a href="#">Privacy Policy</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="Project setup/ui.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
