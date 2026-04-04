@@ -1,10 +1,12 @@
-/* --- ОСНОВНЫЕ ПЕРЕМЕННЫЕ И СБРОС --- */
 :root {
     --primary: #2563eb;
     --text: #111827;
     --gray: #6b7280;
     --white: #ffffff;
     --border-color: #e5e7eb;
+    --error: #ef4444; 
+    --success: #10b981;
+    --warning: #f97316;
 }
 
 * {
@@ -24,7 +26,6 @@ body {
     padding: 0 20px; 
 }
 
-/* --- ШАПКА (HEADER) --- */
 header { 
     display: flex; 
     justify-content: space-between; 
@@ -63,9 +64,17 @@ header {
     width: 40px;
     height: 40px;
     border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    object-fit: cover;
 }
 
-/* --- КНОПКИ --- */
+.profile-icon:hover { 
+    border-color: var(--primary); 
+    transform: scale(1.1); 
+}
+
 .btn { 
     padding: 10px 20px; 
     border-radius: 8px; 
@@ -89,7 +98,6 @@ header {
 
 .btn-signup:hover { background: #1d4ed8; }
 
-/* --- ГЛАВНЫЙ СЛАЙДЕР (HERO) --- */
 .hero-slider { 
     position: relative; 
     height: 450px; 
@@ -157,7 +165,6 @@ header {
 }
 
 .dots { display: flex; gap: 10px; }
-
 .dot { 
     width: 10px; 
     height: 10px; 
@@ -165,7 +172,6 @@ header {
     border-radius: 50%; 
     cursor: pointer; 
 }
-
 .dot.active { background: white; width: 30px; border-radius: 5px; }
 
 .arrows button { 
@@ -179,37 +185,29 @@ header {
     backdrop-filter: blur(5px); 
 }
 
-/* --- СЕКЦИИ И ЗАГОЛОВКИ --- */
 .courses-section, .locked-section { margin-top: 60px; }
-
 .section-header { margin-bottom: 30px; }
-
 .header-main-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-
 .subtitle {
     margin-top: 6px;
     color: var(--gray);
     font-size: 1rem;
 }
-
 .see-all {
     color: #5a5aed;
     text-decoration: underline;
     font-size: 14px;
     font-weight: 500;
 }
-
-/* --- СЕТКА КАРТОЧЕК --- */
 .course-grid { 
     display: grid; 
     grid-template-columns: repeat(3, 1fr); 
     gap: 25px; 
 }
-
 .course-card { 
     background: white; 
     border-radius: 16px; 
@@ -217,16 +215,12 @@ header {
     border: 1px solid var(--border-color); 
     transition: 0.3s; 
 }
-
 .course-card:hover { 
     transform: translateY(-5px); 
     box-shadow: 0 10px 20px rgba(0,0,0,0.05); 
 }
-
 .card-banner { width: 100%; height: 180px; object-fit: cover; }
-
 .card-body { padding: 20px; }
-
 .meta { 
     display: flex; 
     justify-content: space-between; 
@@ -234,9 +228,7 @@ header {
     color: var(--gray); 
     margin-bottom: 12px; 
 }
-
 .meta img { width: 14px; margin-right: 4px; vertical-align: middle; }
-
 .card-footer { 
     display: flex; 
     justify-content: space-between; 
@@ -245,20 +237,17 @@ header {
     border-top: 1px solid #f3f4f6; 
     padding-top: 15px; 
 }
-
 .price { 
     color: var(--gray); 
     font-size: 14px; 
     font-weight: 500; 
 }
-
 .amount { 
-    display: block; /* Цена будет на следующей строке или просто крупнее */
+    display: block; 
     font-size: 24px; 
     color: #000; 
     font-weight: 700; 
 }
-
 .btn-details { 
     background: var(--primary); 
     color: white; 
@@ -269,7 +258,6 @@ header {
     font-weight: 600;
 }
 
-/* --- ЗАБЛОКИРОВАННАЯ СЕКЦИЯ (LOCK) --- */
 .lock-container {
     position: relative;
     border: 2px dashed #cbd5e1;
@@ -282,7 +270,6 @@ header {
     justify-content: center;
     align-items: center;
 }
-
 .blurred-content {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -292,13 +279,6 @@ header {
     pointer-events: none;
     width: 100%;
 }
-
-/* Стиль для пустых карточек в блюре */
-.course-card.ghost { 
-    background: #f1f5f9; 
-    height: 300px;
-}
-
 .lock-overlay {
     position: absolute;
     top: 50%;
@@ -316,7 +296,6 @@ header {
     flex-direction: column;
     align-items: center;
 }
-
 .lock-circle {
     width: 80px;
     height: 80px;
@@ -327,17 +306,7 @@ header {
     align-items: center;
     margin-bottom: 20px;
 }
-
 .lock-icon { width: 35px; }
-
-.lock-overlay p {
-    font-size: 1.1rem;
-    font-weight: 500;
-    margin-bottom: 25px;
-    color: var(--text);
-    line-height: 1.4;
-}
-
 .btn-login-large { 
     background: var(--primary); 
     color: white; 
@@ -349,39 +318,28 @@ header {
     font-size: 1rem; 
     transition: 0.3s;
 }
-
 .btn-login-large:hover {
     background: #1d4ed8;
     transform: scale(1.03);
 }
 
-/* --- ФУТЕР --- */
 footer { 
     margin-top: 100px; 
     padding: 60px 0 30px; 
     border-top: 1px solid var(--border-color); 
 }
-
 .footer-main { display: flex; justify-content: space-between; margin-bottom: 40px; }
-
 .footer-info { max-width: 320px; }
-
 .footer-logo { height: 30px; margin-bottom: 20px; }
-
 .social-icons { display: flex; gap: 15px; margin-top: 20px; }
-
 .social-icons a { 
     color: var(--gray); 
     font-size: 1.2rem; 
     transition: 0.3s; 
 }
-
 .social-icons a:hover { color: var(--primary); }
-
 .footer-links { display: flex; gap: 60px; }
-
 .col h4 { margin-bottom: 20px; font-size: 1rem; color: var(--text); }
-
 .col a { 
     display: flex;
     align-items: center;
@@ -391,9 +349,7 @@ footer {
     margin-bottom: 15px; 
     font-size: 0.9rem; 
 }
-
 .col a img { width: 18px; }
-
 .footer-bottom {
     border-top: 1px solid var(--border-color);
     padding-top: 30px;
@@ -402,11 +358,279 @@ footer {
     font-size: 0.85rem;
     color: var(--gray);
 }
-
 .legal-links a { 
     margin: 0 10px; 
     color: var(--gray); 
     text-decoration: none; 
 }
 
-.legal-links a:hover { text-decoration: underline; }
+/* =========================================
+   MODALS
+   ========================================= */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(8px);
+    display: none; 
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-card {
+    background: white;
+    width: 100%;
+    max-width: 440px;
+    padding: 40px;
+    border-radius: 24px;
+    position: relative;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    display: none; 
+    animation: modalFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--gray);
+}
+
+.back-modal {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: var(--gray);
+}
+
+.modal-card h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.modal-subtitle {
+    text-align: center;
+    color: var(--gray);
+    margin-bottom: 30px;
+    font-size: 14px;
+}
+
+/* --- ВАЛИДАЦИЯ И ОШИБКИ (ПОЛНОСТЬЮ КРАСНОЕ) --- */
+.form-group.has-error label {
+    color: var(--error);
+}
+
+.form-group.has-error input {
+    border-color: var(--error) !important;
+    background-color: rgba(239, 68, 68, 0.05); /* Легкий красный фон инпута */
+}
+
+.error-msg {
+    color: var(--error);
+    font-size: 12px;
+    margin-top: 5px;
+    width: 100%;
+    height: 15px;
+    display: none;
+}
+
+.form-group.has-error .error-msg {
+    display: block;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    transition: color 0.3s;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    font-size: 16px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.form-group input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+}
+
+/* --- ПРОГРЕСС-БАР --- */
+.progress-steps {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 30px;
+}
+
+.step-segment {
+    height: 6px;
+    flex: 1;
+    background: #e5e7eb;
+    border-radius: 10px;
+    transition: background 0.3s;
+}
+
+#modal-signup-1 .step-segment:nth-child(1) { background: var(--primary); }
+#modal-signup-2 .step-segment:nth-child(1),
+#modal-signup-2 .step-segment:nth-child(2) { background: var(--primary); }
+#modal-signup-3 .step-segment:nth-child(1),
+#modal-signup-3 .step-segment:nth-child(2),
+#modal-signup-3 .step-segment:nth-child(3) { background: var(--primary); }
+
+.btn-primary-modal {
+    width: 100%;
+    padding: 14px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.modal-footer-text {
+    text-align: center;
+    font-size: 14px;
+    margin-top: 20px;
+    color: var(--gray);
+}
+
+.modal-footer-text a {
+    color: var(--primary);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+/* --- ЗАГРУЗКА ФОТО (НОВЫЙ ВИД) --- */
+.upload-zone {
+    border: 2px dashed var(--border-color);
+    padding: 20px;
+    text-align: center;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    min-height: 100px;
+    justify-content: center;
+}
+
+.file-info-display {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-align: left;
+    width: 100%;
+}
+
+.file-info-display img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.file-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.file-name {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 180px;
+}
+
+.file-size {
+    font-size: 12px;
+    color: var(--gray);
+}
+
+.change-link {
+    color: var(--primary);
+    text-decoration: underline;
+    font-size: 13px;
+    cursor: pointer;
+    margin-top: 4px;
+    font-weight: 500;
+}
+
+.upload-zone.dragover {
+    border-color: var(--primary);
+    background-color: rgba(37, 99, 235, 0.05);
+}
+
+.upload-zone:hover { border-color: var(--primary); background: #f8fafc; }
+
+/* --- ПРОФИЛЬ --- */
+.profile-header-modal {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.avatar-wrapper {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: #eee;
+}
+
+.avatar-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Статусы: оранжевый (incomplete) и зеленый (complete) */
+.status-badge {
+    font-size: 12px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.status-badge.incomplete {
+    background: #fff7ed;
+    color: var(--warning);
+}
+
+.status-badge.complete {
+    background: #ecfdf5;
+    color: var(--success);
+}
+
+.row { display: flex; gap: 15px; }
+.row .form-group { flex: 1; }
