@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browse Courses - Bootcamp</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="browse.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <div class="logo" onclick="location.href='index.html'" style="cursor:pointer">
+                <img src="assets/Logo.svg" alt="Logo">
+                <span>Bootcamp</span>
+            </div>
+            <div class="header-right">
+                <a href="browse.html" class="nav-link active"><img src="./assets/Nav icon.svg" alt="browser"> Browse Courses</a>
+                <a href="#" id="enrolled-link" class="nav-link" style="display: none;"><img src="./assets/books icon.svg" alt="courses"> Enrolled Courses</a>
+                <button class="btn btn-login">Log In</button>
+                <button class="btn btn-signup">Sign Up</button>
+                <img src="./assets/Avatar.svg" alt="Profile" id="header-profile-icon" class="profile-icon" style="display: none;">
+            </div>
+        </header>
+
+        <main class="browse-layout">
+            <aside class="sidebar">
+                <h2>Filters</h2>
+                <div class="filter-section">
+                    <h3>Categories</h3>
+                    <div id="categories-list" class="categories-list">
+                        <p class="loading-text">Loading...</p>
+                    </div>
+                </div>
+            </aside>
+
+            <section class="content-area">
+                <div class="search-wrapper">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="course-search" placeholder="Search for courses...">
+                </div>
+
+                <div id="courses-container" class="course-grid">
+                    </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="modal-overlay" class="modal-overlay">
+        </div>
+
+    <script src="main.js"></script>
+    <script src="browse.js"></script>
+</body>
+</html>
