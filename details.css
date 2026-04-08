@@ -1,0 +1,269 @@
+/* --- ძირითადი განლაგება --- */
+.details-wrapper {
+    display: flex;
+    gap: 40px;
+    margin-top: 24px;
+    margin-bottom: 80px;
+    align-items: flex-start;
+}
+
+.details-content {
+    flex: 2;
+}
+
+.registration-sidebar {
+    flex: 1;
+    position: sticky;
+    top: 20px;
+}
+
+/* --- მარცხენა მხარე --- */
+#course-name {
+    font-size: 32px;
+    font-weight: 700;
+    color: #1A1A1A;
+    margin-bottom: 20px;
+}
+
+.main-banner-container img {
+    width: 100%;
+    max-width: 680px; /* ზომა როგორც Снимок экрана 180507.png-ზე */
+    height: auto;
+    border-radius: 24px;
+    object-fit: cover;
+    margin-bottom: 24px;
+}
+
+.info-strip {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 24px;
+    font-size: 14px;
+    color: #828282;
+    align-items: center;
+}
+
+.tag-badge {
+    background: #F5F5FF;
+    color: #5B58FF;
+    padding: 6px 16px;
+    border-radius: 100px;
+    font-weight: 500;
+}
+
+.instructor-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 20px 0;
+    border-top: 1px solid #F2F2F2;
+    margin-bottom: 24px;
+}
+
+.instructor-row img {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+}
+
+/* --- აკორდეონები (Steps) --- */
+.acc-item {
+    border-bottom: 1px solid #F2F2F2;
+}
+
+.acc-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 0;
+    cursor: pointer;
+}
+
+.acc-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 600;
+    color: #2D2D8E;
+}
+
+.acc-title span {
+    border: 1.5px solid #2D2D8E;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 12px;
+}
+
+.acc-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease-out;
+}
+
+.acc-item.active .acc-content {
+    max-height: 300px;
+    padding-bottom: 20px;
+}
+
+.acc-item i {
+    transition: transform 0.3s;
+    color: #828282;
+}
+
+.acc-item.active i {
+    transform: rotate(180deg);
+}
+
+.options-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.option-btn {
+    padding: 10px 16px;
+    border: 1px solid #E0E0E0;
+    border-radius: 10px;
+    background: #FFFFFF;
+    color: #4F4F4F;
+    font-size: 13px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.option-btn.active {
+    background: #5B58FF;
+    color: #FFFFFF;
+    border-color: #5B58FF;
+}
+
+/* --- ფასის ბლოკი (image_f7b641.png) --- */
+.price-summary-card {
+    background: #FFFFFF;
+    border: 1px solid #F2F2F2;
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.03);
+    margin-top: 24px;
+}
+
+.price-main-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.price-main-row span { color: #828282; font-size: 16px; }
+.price-main-row strong { font-size: 32px; font-weight: 700; color: #1A1A1A; }
+
+.price-details {
+    border-top: 1px solid #F2F2F2;
+    padding-top: 16px;
+    margin-bottom: 24px;
+}
+
+.p-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #828282;
+}
+
+.btn-enroll-final {
+    width: 100%;
+    padding: 16px;
+    background: #F0F0FF;
+    color: #5B58FF;
+    border: none;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.btn-enroll-final:not(:disabled) {
+    background: #5B58FF;
+    color: white;
+}
+
+/* --- Auth Alert Small --- */
+.auth-alert-small {
+    background: #F8F9FB;
+    border: 1px solid #E0E0E0;
+    border-radius: 16px;
+    padding: 16px;
+    margin-top: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.alert-content { display: flex; gap: 12px; text-align: left; }
+.alert-content i { color: #F2994A; font-size: 20px; margin-top: 4px; }
+.alert-content h4 { font-size: 14px; font-weight: 700; margin: 0 0 4px 0; }
+.alert-content p { font-size: 11px; color: #828282; margin: 0; line-height: 1.4; }
+
+.btn-sign-in-small {
+    background: #F0F0FF;
+    color: #5B58FF;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+/* --- პროგრესი და რეიტინგი --- */
+.completed-card {
+    background: white;
+    border: 1px solid #F2F2F2;
+    border-radius: 20px;
+    padding: 24px;
+    margin-top: 20px;
+}
+
+.status-badge-green {
+    background: #E8F5E9;
+    color: #2E7D32;
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.progress-bar-bg {
+    background: #F2F2F2;
+    height: 8px;
+    border-radius: 10px;
+    margin: 12px 0;
+}
+
+.progress-bar-fill {
+    background: #5B58FF;
+    height: 100%;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.stars {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.stars i {
+    font-size: 24px;
+    color: #E0E0E0;
+    cursor: pointer;
+}
+
+.stars i.active { color: #F2C94C; }

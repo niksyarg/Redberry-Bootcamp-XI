@@ -8,7 +8,6 @@ let activeFilters = {
     topicName: null
 };
 
-
 async function initPage() {
     try {
         const [catRes, topRes, instRes, courseRes] = await Promise.all([
@@ -27,14 +26,12 @@ async function initPage() {
         applyFilters(); 
         renderPagination();
         
-        // ვამოწმებთ, არის თუ არა მომხმარებელი შესული
         checkAuthStatus();
 
     } catch (err) {
         console.error("მონაცემების ჩატვირთვა ვერ მოხერხდა:", err);
     }
 }
-
 
 function renderCategories(data) {
     const div = document.getElementById('categoryList');
@@ -46,7 +43,6 @@ function renderCategories(data) {
     });
 }
 
-// 3. Topics (თემები)
 function renderTopics(data) {
     const div = document.getElementById('topicList');
     if (!div) return;
@@ -67,7 +63,6 @@ function renderTopics(data) {
     });
 }
 
-
 function renderInstructors(data) {
     const div = document.getElementById('instructorList');
     if (!div) return;
@@ -82,7 +77,7 @@ function renderInstructors(data) {
     });
 }
 
-
+// აი აქ ჩავასწორე ღილაკის ლოგიკა!
 function renderCourses(courses) {
     const grid = document.getElementById('coursesGrid');
     const countLabel = document.getElementById('resultsCount');
@@ -98,6 +93,7 @@ function renderCourses(courses) {
         const instructor = allInstructors.find(ins => ins.id === course.instructor_id);
         const instructorName = instructor ? instructor.name : "Expert Instructor";
 
+        // ლექტორის ნათქვამი onclick აქ არის ჩასმული:
         return `
         <div class="course-card">
             <img src="${course.image}" class="card-banner">
@@ -109,13 +105,12 @@ function renderCourses(courses) {
                 <h3>${course.title}</h3>
                 <div class="card-footer">
                     <span class="price">Starting from <span class="amount">$${course.price}</span></span>
-                    <button class="btn-details">Details</button>
+                    <button class="btn-details" onclick="window.location.href='details.html?id=${course.id}'">Details</button>
                 </div>
             </div>
         </div>`;
     }).join('');
 }
-
 
 function applyFilters() {
     let result = [...allCourses];
@@ -130,8 +125,9 @@ function applyFilters() {
         result = result.filter(c => c.title.toLowerCase().includes(activeFilters.topicName.toLowerCase()));
     }
 
-   
-    const sortValue = document.getElementById('sortCourses').value;
+    const sortElement = document.getElementById('sortCourses');
+    const sortValue = sortElement ? sortElement.value : 'newest';
+    
     if (sortValue === 'low-to-high') result.sort((a, b) => a.price - b.price);
     else if (sortValue === 'high-to-low') result.sort((a, b) => b.price - a.price);
     else if (sortValue === 'newest') result.sort((a, b) => b.id - a.id);
@@ -150,7 +146,6 @@ function toggleFilter(parent, el, key, selector) {
     }
     applyFilters();
 }
-
 
 function checkAuthStatus() {
     const isLoggedIn = localStorage.getItem('isLoggedIn');
