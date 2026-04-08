@@ -163,36 +163,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const headerProfileIconImg = document.getElementById('header-profile-icon');
     const profileModalImg = document.getElementById('profile-img-preview');
 
-    function handleFile(file) {
-        if (file && file.type.startsWith('image/')) {
-            const reader = new FileReader();
-            const fileSizeMB = (file.size / (1024 * 1024)).toFixed(2);
+    function renderLoggedInUI(isLoggedIn) {
+    const loginBtn = document.querySelector('.btn-login');
+    const signupBtn = document.querySelector('.btn-signup');
+    const profileIcon = document.getElementById('header-profile-icon');
+    
+    // თუ browse.html-ზე ხარ, ეს ელემენტი შეიძლება არ იყოს, ამიტომ ვამოწმებთ
+    const lockContainer = document.querySelector('.lock-container');
 
-            reader.onload = function(e) {
-                const result = e.target.result;
-                avatarTrigger.innerHTML = `
-                    <div class="file-info-display">
-                        <img src="${result}" alt="preview">
-                        <div class="file-details">
-                            <span class="file-name">${file.name}</span>
-                            <span class="file-size">Size - ${fileSizeMB}MB</span>
-                            <span class="change-link" id="change-photo-link">Change</span>
-                        </div>
-                    </div>
-                `;
-
-                document.getElementById('change-photo-link').addEventListener('click', (ev) => {
-                    ev.stopPropagation();
-                    avatarInput.click();
-                });
-
-                if (headerProfileIconImg) headerProfileIconImg.src = result;
-                if (profileModalImg) profileModalImg.src = result;
-            }
-            reader.readAsDataURL(file);
+    if (isLoggedIn) {
+        if (loginBtn) loginBtn.style.display = 'none';
+        if (signupBtn) signupBtn.style.display = 'none';
+        if (profileIcon) profileIcon.style.display = 'block';
+        
+        // თუ მთავარ გვერდზე ვართ, "ბოქლომი" მოვხსნათ
+        if (lockContainer) {
+            lockContainer.style.display = 'none'; 
         }
     }
-
+}
     if (avatarTrigger && avatarInput) {
         avatarTrigger.addEventListener('click', () => {
             if (!document.getElementById('change-photo-link')) {

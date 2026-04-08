@@ -6,52 +6,207 @@
     <title>Browse Courses - Bootcamp</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="browse.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
     <div class="container">
         <header>
-            <div class="logo" onclick="location.href='index.html'" style="cursor:pointer">
+            <div class="logo" style="cursor: pointer;" onclick="window.location.href='index.html'">
                 <img src="assets/Logo.svg" alt="Logo">
                 <span>Bootcamp</span>
             </div>
             <div class="header-right">
-                <a href="browse.html" class="nav-link active"><img src="./assets/Nav icon.svg" alt="browser"> Browse Courses</a>
-                <a href="#" id="enrolled-link" class="nav-link" style="display: none;"><img src="./assets/books icon.svg" alt="courses"> Enrolled Courses</a>
+                <a href="browse.html" class="nav-link active">
+                    <img src="./assets/Nav icon.svg" alt="browser"> Browse Courses
+                </a>
                 <button class="btn btn-login">Log In</button>
                 <button class="btn btn-signup">Sign Up</button>
                 <img src="./assets/Avatar.svg" alt="Profile" id="header-profile-icon" class="profile-icon" style="display: none;">
             </div>
         </header>
 
-        <main class="browse-layout">
+        <nav class="breadcrumb" style="margin: 20px 0; font-size: 14px; color: #828282;">
+            <span style="cursor: pointer;" onclick="window.location.href='index.html'">Home</span> > 
+            <span style="color: #5B58FF; font-weight: 500;">Browse</span>
+        </nav>
+
+        <div class="browse-layout">
             <aside class="sidebar">
-                <h2>Filters</h2>
-                <div class="filter-section">
-                    <h3>Categories</h3>
-                    <div id="categories-list" class="categories-list">
-                        <p class="loading-text">Loading...</p>
-                    </div>
+                <div class="filter-header">
+                    <h2 style="font-size: 24px; font-weight: 600; margin: 0;">Filters</h2>
+                    <button id="clearFilters" class="btn-clear" style="background:none; border:none; color:#EB5757; cursor:pointer; font-weight:500;">
+                        Clear All Filters &times;
+                    </button>
+                </div>
+
+                <div class="filter-group">
+                    <h4>Categories</h4>
+                    <div id="categoryList" class="category-grid"></div>
+                </div>
+
+                <div class="filter-group">
+                    <h4>Topics</h4>
+                    <div id="topicList" class="topic-container"></div>
+                </div>
+
+                <div class="filter-group">
+                    <h4>Instructor</h4>
+                    <div id="instructorList" class="instructor-container"></div>
                 </div>
             </aside>
 
-            <section class="content-area">
-                <div class="search-wrapper">
-                    <i class="fas fa-search search-icon"></i>
-                    <input type="text" id="course-search" placeholder="Search for courses...">
-                </div>
-
-                <div id="courses-container" class="course-grid">
+            <main class="browse-main">
+                <div class="results-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+                    <h3 id="resultsCount" style="font-size: 18px; font-weight: 500; color: #333;">Showing 0 out of 90</h3>
+                    
+                    <div class="sort-dropdown" style="display: flex; align-items: center; gap: 8px;">
+                        <span style="font-size: 14px; color: #4F4F4F;">Sort By:</span>
+                        <select id="sortCourses" style="border: none; font-weight: 600; color: #5B58FF; cursor: pointer; outline: none; background: transparent;">
+                            <option value="newest">Newest First</option>
+                            <option value="low-to-high">Price: Low to High</option>
+                            <option value="high-to-low">Price: High to Low</option>
+                            <option value="most-popular">Most Popular</option>
+                            <option value="a-z">Title: A to Z</option>
+                        </select>
                     </div>
-            </section>
-        </main>
+                </div>
+                
+                <div id="coursesGrid" class="course-grid"></div>
+                <div id="pagination" class="pagination"></div>
+            </main>
+        </div>
+
+       <footer>
+            <div class="footer-main">
+                <div class="footer-info">
+                    <img src="assets/Logo.svg" alt="Footer Logo" class="footer-logo">
+                    <p>Learn new skills and advance your career with our expert-led courses.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="col">
+                        <h4>Explore</h4>
+                        <a href="#">Enrolled Courses</a>
+                        <a href="#">Browse Courses</a>
+                    </div>
+                    <div class="col">
+                        <h4>Account</h4>
+                        <a href="#">My Profile</a>
+                    </div>
+                    <div class="col">
+                        <h4>Contact</h4>
+                        <a href="#"><img src="./assets/Icon_email.svg" alt="Email"> contact@company.com</a>
+                        <a href="#"><img src="./assets/Icon_phone.svg" alt="Phone"> (+995) 555 111 222</a>
+                        <a href="#"><img src="./assets/Icon_map.svg" alt="Location"> Aghmashenebeli St.115</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="copyright">Copyright © 2026 Redberry International</div>
+                <div class="legal-links">
+                    <span>All Rights Reserved</span> | 
+                    <a href="#">Terms and Conditions</a> | 
+                    <a href="#">Privacy Policy</a>
+                </div>
+            </div>
+        </footer>
     </div>
 
     <div id="modal-overlay" class="modal-overlay">
+        <div id="modal-login" class="modal-card">
+            <button class="close-modal">&times;</button>
+            <h2>Welcome Back</h2>
+            <p class="modal-subtitle">Log in to continue your learning</p>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" id="login-email" placeholder="you@example.com">
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" id="login-password" placeholder="********">
+            </div>
+            <button id="btn-login-submit" class="btn-primary-modal">Log In</button>
+            <p class="modal-footer-text">Don't have an account? <a href="#" id="go-to-signup">Sign Up</a></p>
         </div>
 
+        <div id="modal-signup-1" class="modal-card">
+            <button class="close-modal">&times;</button>
+            <h2>Create Account</h2>
+            <p class="modal-subtitle">Join and start learning today</p>
+            <div class="progress-steps">
+                <div class="step-segment"></div>
+                <div class="step-segment"></div>
+                <div class="step-segment"></div>
+            </div>
+            <div class="form-group">
+                <label>Email*</label>
+                <input type="email" id="signup-email" placeholder="you@example.com">
+                <span class="error-msg"></span>
+            </div>
+            <button id="btn-signup-next-1" class="btn-primary-modal">Next</button>
+            <p class="modal-footer-text">Already have an account? <a href="#" class="go-to-login">Log In</a></p>
+        </div>
+
+        <div id="modal-signup-2" class="modal-card">
+            <button class="back-modal"><i class="fas fa-chevron-left"></i></button>
+            <button class="close-modal">&times;</button>
+            <h2>Create Account</h2>
+            <div class="progress-steps">
+                <div class="step-segment"></div>
+                <div class="step-segment"></div>
+                <div class="step-segment"></div>
+            </div>
+            <div class="form-group">
+                <label>Password*</label>
+                <input type="password" id="signup-password" placeholder="Password">
+                <span class="error-msg"></span>
+            </div>
+            <div class="form-group">
+                <label>Confirm Password*</label>
+                <input type="password" id="signup-confirm-password" placeholder="********">
+                <span class="error-msg"></span>
+            </div>
+            <button id="btn-signup-next-2" class="btn-primary-modal">Next</button>
+            <p class="modal-footer-text">Already have an account? <a href="#" class="go-to-login">Log In</a></p>
+        </div>
+
+        <div id="modal-signup-3" class="modal-card">
+            <button class="back-modal"><i class="fas fa-chevron-left"></i></button>
+            <button class="close-modal">&times;</button>
+            <h2>Create Account</h2>
+            <div class="progress-steps">
+                <div class="step-segment"></div>
+                <div class="step-segment"></div>
+                <div class="step-segment"></div>
+            </div>
+            <div class="form-group">
+                <label>Username*</label>
+                <input type="text" id="signup-username" placeholder="Username">
+                <span class="error-msg"></span>
+            </div>
+            <div class="form-group">
+                <label>Upload Avatar</label>
+                <div class="upload-zone" id="avatar-upload-trigger">
+                    <input type="file" id="avatar-input" accept="image/*" style="display: none;">
+                    <img src="./assets/Icon isari.svg" alt="upload" id="upload-preview-img">
+                    <p id="upload-text">Drag and drop or <span>Upload file</span></p>
+                </div>
+            </div>
+            <button id="btn-signup-finish" class="btn-primary-modal">Sign Up</button>
+            <p class="modal-footer-text">Already have an account? <a href="#" class="go-to-login">Log In</a></p>
+        </div>
+    </div>
+
+    <script src="./Project setup/api.js"></script>
     <script src="main.js"></script>
-    <script src="browse.js"></script>
 </body>
 </html>

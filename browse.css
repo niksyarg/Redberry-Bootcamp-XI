@@ -1,54 +1,84 @@
+
 .browse-layout {
-    display: grid;
-    grid-template-columns: 280px 1fr;
+    display: flex;
     gap: 40px;
     margin-top: 40px;
-    align-items: start;
+    align-items: flex-start;
 }
 
-.sidebar h2 { font-size: 24px; margin-bottom: 24px; }
-.filter-section h3 { font-size: 16px; color: var(--gray); margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
+.sidebar { width: 260px; flex-shrink: 0; }
+.browse-main { flex-grow: 1; }
 
-.categories-list { display: flex; flex-direction: column; gap: 10px; }
-.category-item {
-    cursor: pointer;
-    padding: 10px 15px;
-    border-radius: 8px;
-    transition: 0.3s;
+
+.filter-group h4 {
+    font-size: 14px;
+    color: #4F4F4F;
+    margin: 20px 0 12px 0;
     font-weight: 500;
 }
-.category-item:hover, .category-item.active {
-    background: rgba(37, 99, 235, 0.1);
-    color: var(--primary);
-}
 
-.search-wrapper { position: relative; margin-bottom: 30px; }
-.search-icon { position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: var(--gray); }
-#course-search {
-    width: 100%;
-    padding: 16px 50px;
-    border-radius: 12px;
-    border: 1px solid var(--border-color);
-    font-size: 16px;
-    outline: none;
-}
 
-.course-grid {
+.category-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 25px;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
 }
+.category-btn {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    background: #fff;
+    border: 1px solid #E0E0E0;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 13px;
+}
+.category-btn.active { border-color: #5B58FF; color: #5B58FF; background: #F5F5FF; }
 
-/* Стили карточки курса из API */
-.api-course-card {
-    background: white;
-    border-radius: 16px;
-    border: 1px solid var(--border-color);
-    overflow: hidden;
-    transition: 0.3s;
+/* 2. Topics (Pills) */
+.topic-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
 }
-.api-course-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
-.api-card-img { width: 100%; height: 200px; object-fit: cover; }
-.api-card-content { padding: 20px; }
-.api-card-instructor { font-size: 14px; color: var(--gray); margin-bottom: 10px; display: block; }
-.api-card-title { font-size: 18px; font-weight: 700; margin-bottom: 10px; line-height: 1.4; height: 50px; overflow: hidden; }
+.topic-pill {
+    background: #F2F2F2;
+    border: none;
+    border-radius: 100px;
+    padding: 6px 14px;
+    font-size: 12px;
+    cursor: pointer;
+}
+.topic-pill.active { background: #5B58FF; color: white; }
+
+
+.instructor-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 6px 0;
+    cursor: pointer;
+}
+.instructor-item img { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; }
+
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 40px;
+    padding-bottom: 50px;
+}
+.page-btn {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #E0E0E0;
+    border-radius: 4px;
+    background: #fff;
+    cursor: pointer;
+    font-size: 14px;
+}
+.page-btn.active { background: #5B58FF; color: #fff; border-color: #5B58FF; }
