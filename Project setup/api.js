@@ -1,6 +1,5 @@
 const API_URL = 'https://api.redclass.redberryinternship.ge/api';
 
-// 1. აიკონების შესაბამისობა (Mapping)
 const categoryIcons = {
     "Development": "assets/development.svg",
     "Design": "assets/design.svg",
@@ -42,13 +41,13 @@ async function initPage() {
     }
 }
 
-// 2. კატეგორიების რენდერი აიკონებით
+
 function renderCategories(data) {
     const div = document.getElementById('categoryList');
     if (!div) return;
 
     div.innerHTML = data.map(c => {
-        const iconPath = categoryIcons[c.name] || ""; // ვიღებთ აიკონს ობიექტიდან
+        const iconPath = categoryIcons[c.name] || ""; 
         return `
             <button class="category-btn" data-id="${c.id}">
                 ${iconPath ? `<img src="${iconPath}" alt="${c.name}" class="cat-icon-small">` : ""}
@@ -96,7 +95,6 @@ function renderInstructors(data) {
     });
 }
 
-// 3. კურსების რენდერი აიკონებით TAG-ებში
 function renderCourses(courses) {
     const grid = document.getElementById('coursesGrid');
     const countLabel = document.getElementById('resultsCount');
@@ -112,7 +110,7 @@ function renderCourses(courses) {
         const instructor = allInstructors.find(ins => ins.id === course.instructor_id);
         const instructorName = instructor ? instructor.name : "Expert Instructor";
         
-        // კატეგორიის აიკონი TAG-ისთვის
+       
         const catIcon = categoryIcons[course.category.name] || "";
 
         return `
