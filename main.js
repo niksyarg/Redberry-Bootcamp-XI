@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const API_URL = 'https://api.redclass.redberryinternship.ge/api';
 
-    // --- ПЕРЕМЕННЫЕ И ЭЛЕМЕНТЫ ---
     const slides = document.querySelectorAll('.slide');
     const dots = document.querySelectorAll('.dot');
     const nextBtn = document.getElementById('next');
@@ -13,7 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const displayUsername = document.getElementById('display-username');
     const profileFullnameInput = document.getElementById('profile-fullname');
 
-    // --- СЛАЙДЕР (Slider Logic) ---
     function updateSlider(index) {
         if (slides.length === 0) return;
         slides.forEach(s => s.classList.remove('active'));
@@ -32,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
         dot.addEventListener('click', () => updateSlider(i));
     });
 
-    // --- МОДАЛЬНЫЕ ОКНА (Modal Management) ---
+    
     function openModal(modalId) {
         if (!document.getElementById(modalId)) return;
         modalOverlay.style.display = 'flex';
@@ -64,29 +62,29 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.error-msg').forEach(el => el.style.display = 'none');
     }
 
-    // --- API ლოგიკა (Register, Login, Me, Logout) ---
+    
 
-    // 1. რეგისტრაცია (Register API)
+    
    document.getElementById('btn-signup-finish')?.addEventListener('click', async () => {
     const email = document.getElementById('signup-email').value;
     const password = document.getElementById('signup-password').value;
     const username = document.getElementById('signup-username').value;
     const avatarInput = document.getElementById('avatar-input'); 
 
-    // 1. ვქმნით FormData ობიექტს
+   
     const formData = new FormData();
     formData.append('username', username);
     formData.append('email', email);
     formData.append('password', password);
     formData.append('password_confirmation', password);
 
-    // 2. ვამოწმებთ, აირჩია თუ არა მომხმარებელმა სურათი
+    
     if (avatarInput && avatarInput.files[0]) {
         formData.append('avatar', avatarInput.files[0]);
     }
 
     try {
-        // 3. ვაგზავნით formData-ს. Axios ავტომატურად დააყენებს სწორ Content-Type-ს
+
         const res = await axios.post(`${API_URL}/register`, formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
@@ -96,12 +94,11 @@ document.addEventListener('DOMContentLoaded', () => {
         handleAuthSuccess(res.data.token, username);
     } catch (err) {
         console.error(err);
-        // თუ სერვერი აბრუნებს კონკრეტულ შეცდომას (მაგ. username დაკავებულია)
         const errorMessage = err.response?.data?.message || 'Registration failed. Check details.';
         showError('signup-username', errorMessage);
     }
 });
-    // 2. შესვლა (Login API)
+   
     document.getElementById('btn-login-submit')?.addEventListener('click', async () => {
         const email = document.getElementById('login-email').value;
         const password = document.getElementById('login-password').value;
@@ -118,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 3. მომხმარებლის ინფორმაცია (Me API)
+   
     async function fetchUserData() {
         const token = localStorage.getItem('token');
         if (!token) return;
@@ -143,7 +140,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // if (displayUsername) displayUsername.textContent = name;
     }
 
-    // --- РЕГИСТРАЦИЯ: Навигация (Signup Navigation) ---
     document.getElementById('btn-signup-next-1')?.addEventListener('click', () => {
         clearErrors();
         const email = document.getElementById('signup-email').value;
@@ -168,7 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- SIDEBAR (ENROLLED COURSES) ---
+    
     const sidebar = document.getElementById('enrolled-sidebar');
     const sidebarOverlay = document.getElementById('sidebar-overlay');
     const enrolledLink = document.getElementById('enrolled-link');
@@ -228,7 +224,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- UI МАРТВА (LoggedIn UI) ---
     function renderLoggedInUI(isLoggedIn) {
         const wrapper = document.getElementById('main-wrapper'); 
         const enrolledLink = document.getElementById('enrolled-link');
@@ -255,11 +250,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 const overlay = lockContainer.querySelector('.lock-overlay');
                 if (overlay) overlay.style.display = 'none';
             }
-            fetchUserData(); // ტოკენით ინფორმაციის წამოღება
+            fetchUserData(); 
         }
     }
 
-    // --- ღილაკების ივენთები (Button Events) ---
+   
     const btnLogin = document.querySelector('.btn-login');
     const btnSignup = document.querySelector('.btn-signup');
     const btnLoginLarge = document.querySelector('.btn-login-large');
@@ -273,7 +268,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.close-modal').forEach(btn => btn.addEventListener('click', closeModal));
     if(modalOverlay) modalOverlay.addEventListener('click', (e) => { if (e.target === modalOverlay) closeModal(); });
 
-    // საწყისი შემოწმება
+    
     const savedStatus = localStorage.getItem('isLoggedIn') === 'true';
     renderLoggedInUI(savedStatus);
 });
