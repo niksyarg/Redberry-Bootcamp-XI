@@ -1,4 +1,3 @@
-
 .browse-layout {
     display: flex;
     gap: 40px;
@@ -6,10 +5,16 @@
     align-items: flex-start;
 }
 
-.sidebar { width: 260px; flex-shrink: 0; }
-.browse-main { flex-grow: 1; }
+.sidebar { 
+    width: 260px; 
+    flex-shrink: 0; 
+}
 
+.browse-main { 
+    flex-grow: 1; 
+}
 
+/* 1. Categories */
 .filter-group h4 {
     font-size: 14px;
     color: #4F4F4F;
@@ -17,23 +22,43 @@
     font-weight: 500;
 }
 
-
 .category-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 8px;
 }
+
 .category-btn {
     display: flex;
     align-items: center;
+    gap: 8px; /* დაშორება აიკონსა და ტექსტს შორის */
     padding: 8px 12px;
     background: #fff;
     border: 1px solid #E0E0E0;
     border-radius: 8px;
     cursor: pointer;
     font-size: 13px;
+    transition: 0.2s ease;
 }
-.category-btn.active { border-color: #5B58FF; color: #5B58FF; background: #F5F5FF; }
+
+/* აიკონის ზომა ღილაკში */
+.category-btn img {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+}
+
+.category-btn:hover {
+    border-color: #5B58FF;
+    background: #F8F8FF;
+}
+
+.category-btn.active { 
+    border-color: #5B58FF; 
+    color: #5B58FF; 
+    background: #F5F5FF; 
+    font-weight: 600;
+}
 
 /* 2. Topics (Pills) */
 .topic-container {
@@ -41,6 +66,7 @@
     flex-wrap: wrap;
     gap: 8px;
 }
+
 .topic-pill {
     background: #F2F2F2;
     border: none;
@@ -48,20 +74,53 @@
     padding: 6px 14px;
     font-size: 12px;
     cursor: pointer;
+    transition: 0.2s;
+    color: #4F4F4F;
 }
-.topic-pill.active { background: #5B58FF; color: white; }
 
+.topic-pill:hover {
+    background: #E0E0E0;
+}
+
+.topic-pill.active { 
+    background: #5B58FF; 
+    color: white; 
+}
+
+/* 3. Instructors */
+.instructor-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
 
 .instructor-item {
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 6px 0;
+    padding: 8px 12px;
     cursor: pointer;
+    border-radius: 8px;
+    transition: 0.2s;
 }
-.instructor-item img { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; }
 
+.instructor-item:hover {
+    background: #F9FAFB;
+}
 
+.instructor-item img { 
+    width: 28px; 
+    height: 28px; 
+    border-radius: 50%; 
+    object-fit: cover; 
+}
+
+.instructor-item span {
+    font-size: 14px;
+    color: #4F4F4F;
+}
+
+/* 4. Pagination */
 .pagination {
     display: flex;
     justify-content: center;
@@ -69,6 +128,7 @@
     margin-top: 40px;
     padding-bottom: 50px;
 }
+
 .page-btn {
     width: 32px;
     height: 32px;
@@ -80,5 +140,23 @@
     background: #fff;
     cursor: pointer;
     font-size: 14px;
+    transition: 0.2s;
 }
-.page-btn.active { background: #5B58FF; color: #fff; border-color: #5B58FF; }
+
+.page-btn:hover:not(.active) {
+    border-color: #5B58FF;
+    color: #5B58FF;
+}
+
+.page-btn.active { 
+    background: #5B58FF; 
+    color: #fff; 
+    border-color: #5B58FF; 
+    font-weight: 600;
+}
+
+/* Clear Filters Button */
+.btn-clear:hover {
+    text-decoration: underline;
+    opacity: 0.8;
+}

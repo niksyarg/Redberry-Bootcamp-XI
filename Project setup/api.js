@@ -1,5 +1,14 @@
 const API_URL = 'https://api.redclass.redberryinternship.ge/api';
 
+// 1. აიკონების შესაბამისობა (Mapping)
+const categoryIcons = {
+    "Development": "assets/development.svg",
+    "Design": "assets/design.svg",
+    "Business": "assets/business.svg",
+    "Data Science": "assets/data science.svg",
+    "Marketing": "assets/markening.svg",
+};
+
 let allCourses = [];
 let allInstructors = [];
 let activeFilters = {
@@ -33,10 +42,20 @@ async function initPage() {
     }
 }
 
+// 2. კატეგორიების რენდერი აიკონებით
 function renderCategories(data) {
     const div = document.getElementById('categoryList');
     if (!div) return;
-    div.innerHTML = data.map(c => `<button class="category-btn" data-id="${c.id}">${c.name}</button>`).join('');
+
+    div.innerHTML = data.map(c => {
+        const iconPath = categoryIcons[c.name] || ""; // ვიღებთ აიკონს ობიექტიდან
+        return `
+            <button class="category-btn" data-id="${c.id}">
+                ${iconPath ? `<img src="${iconPath}" alt="${c.name}" class="cat-icon-small">` : ""}
+                ${c.name}
+            </button>
+        `;
+    }).join('');
     
     div.querySelectorAll('.category-btn').forEach(btn => {
         btn.onclick = () => toggleFilter(div, btn, 'categoryId', '.category-btn');
@@ -77,7 +96,7 @@ function renderInstructors(data) {
     });
 }
 
-// აი აქ ჩავასწორე ღილაკის ლოგიკა!
+// 3. კურსების რენდერი აიკონებით TAG-ებში
 function renderCourses(courses) {
     const grid = document.getElementById('coursesGrid');
     const countLabel = document.getElementById('resultsCount');
@@ -92,19 +111,25 @@ function renderCourses(courses) {
     grid.innerHTML = courses.map(course => {
         const instructor = allInstructors.find(ins => ins.id === course.instructor_id);
         const instructorName = instructor ? instructor.name : "Expert Instructor";
+        
+        // კატეგორიის აიკონი TAG-ისთვის
+        const catIcon = categoryIcons[course.category.name] || "";
 
-        // ლექტორის ნათქვამი onclick აქ არის ჩასმული:
         return `
         <div class="course-card">
             <img src="${course.image}" class="card-banner">
             <div class="card-body">
                 <div class="meta">
-                    <span>${instructorName}</span> 
+                    <span>${instructorName} | ${course.durationWeeks} Weeks</span> 
                     <span>⭐ 4.9</span>
                 </div>
                 <h3>${course.title}</h3>
+                <div class="category-tag">
+                    ${catIcon ? `<img src="${catIcon}" class="tag-icon">` : ""}
+                    ${course.category.name}
+                </div>
                 <div class="card-footer">
-                    <span class="price">Starting from <span class="amount">$${course.price}</span></span>
+                    <span class="price">Starting from <span class="amount">$${course.basePrice}</span></span>
                     <button class="btn-details" onclick="window.location.href='details.html?id=${course.id}'">Details</button>
                 </div>
             </div>
@@ -128,8 +153,8 @@ function applyFilters() {
     const sortElement = document.getElementById('sortCourses');
     const sortValue = sortElement ? sortElement.value : 'newest';
     
-    if (sortValue === 'low-to-high') result.sort((a, b) => a.price - b.price);
-    else if (sortValue === 'high-to-low') result.sort((a, b) => b.price - a.price);
+    if (sortValue === 'low-to-high') result.sort((a, b) => a.basePrice - b.basePrice);
+    else if (sortValue === 'high-to-low') result.sort((a, b) => b.basePrice - a.basePrice);
     else if (sortValue === 'newest') result.sort((a, b) => b.id - a.id);
 
     renderCourses(result);

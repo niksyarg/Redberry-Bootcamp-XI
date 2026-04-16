@@ -100,6 +100,22 @@
                     <button id="enroll-button" class="btn-enroll-final" disabled>Enroll Now</button>
                 </div>
 
+                <div id="enrolled-section" class="completed-card" style="display: none;">
+                    <span class="status-badge" style="background: #EEF2FF; color: #5B58FF; margin-bottom: 15px; display: inline-block;">Enrolled</span>
+                    <div style="margin-bottom: 20px; font-size: 14px; color: #4F4F4F;">
+                        <div style="margin-bottom: 8px;"><i class="far fa-calendar"></i> <span id="selected-schedule">Monday-Wednesday</span></div>
+                        <div style="margin-bottom: 8px;"><i class="far fa-clock"></i> <span id="selected-time">6:00 PM - 8:00 PM</span></div>
+                        <div style="margin-bottom: 8px;"><i class="fas fa-laptop"></i> <span id="selected-type">Online</span></div>
+                    </div>
+                    <div class="progress-info">
+                        <div class="progress-text"><span>65% Complete</span></div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: 65%;"></div>
+                        </div>
+                    </div>
+                    <button id="complete-course-btn" class="btn-primary-modal" style="margin-top: 10px;">Complete Course <i class="fas fa-check"></i></button>
+                </div>
+
                 <div id="auth-notice" class="auth-alert-small" style="display: none;">
                     <div class="alert-content">
                         <i class="fas fa-exclamation-triangle"></i>
@@ -115,9 +131,9 @@
                     <span class="status-badge-green">Completed</span>
                     <div class="progress-info">
                         <div class="progress-text"><span>100% Complete</span></div>
-                        <div class="progress-bar-bg"><div class="progress-bar-fill"></div></div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 100%; background: #2E7D32;"></div></div>
                     </div>
-                    <button class="btn-retake">Retake Course <i class="fas fa-sync"></i></button>
+                    <button id="retake-course-btn" class="btn-retake">Retake Course <i class="fas fa-sync"></i></button>
                     <div class="rating-box">
                         <p>Rate your experience</p>
                         <div class="stars" id="rating-stars">
@@ -173,7 +189,6 @@
     </div>
 
     <div id="modal-overlay" class="modal-overlay">
-        
         <div id="modal-login" class="modal-card">
             <button class="close-modal">&times;</button>
             <h2>Welcome Back</h2>
