@@ -201,7 +201,7 @@ function initStatusButtons() {
                 await axios.post(`${API_URL}/enrollments`, {
                     "courseId": parseInt(courseId),
                     "courseScheduleId": parseInt(scheduleId),
-                    "force": true // ფოზფილის გამო რომ არ გაჭედოს
+                    "force": true 
                 }, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
@@ -209,7 +209,7 @@ function initStatusButtons() {
                 location.reload();
             } catch (err) {
                 console.warn("Enroll error, bypass for video", err);
-                // ვიდეოსთვის რომ არ გაჭედოს ერორზე
+         
                 document.querySelector('.accordion').style.display = 'none';
                 document.getElementById('price-card').style.display = 'none';
                 document.getElementById('enrolled-section').style.display = 'block';
@@ -298,15 +298,14 @@ async function checkAuthStatus() {
                 if (priceCard) priceCard.style.display = 'block';
                 if (profileNotice) profileNotice.style.display = 'flex';
                 
-                // Upgrade ღილაკის ფიქსი - მოდალის გახსნა
                 const upgradeBtn = profileNotice.querySelector('button');
                 if (upgradeBtn) {
                     upgradeBtn.onclick = () => {
-                        // ვამოწმებთ, მოდალის გახსნის ფუნქცია არსებობს თუ არა
+                       
                         if (typeof openModal === 'function') {
                             openModal('modal-profile');
                         } else {
-                            // თუ არა, უბრალოდ მოდალს ხელით ვაჩენთ
+                            
                             const profileModal = document.getElementById('modal-profile');
                             const overlay = document.getElementById('modal-overlay');
                             if(overlay) overlay.style.display = 'flex';
