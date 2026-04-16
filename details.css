@@ -1,4 +1,4 @@
-/* --- ძირითადი განლაგება --- */
+
 .details-wrapper {
     display: flex;
     gap: 40px;
@@ -17,7 +17,6 @@
     top: 20px;
 }
 
-/* Breadcrumb */
 .breadcrumb {
     margin: 20px 0;
     font-size: 14px;
@@ -26,7 +25,7 @@
 .breadcrumb a { text-decoration: none; color: inherit; }
 .breadcrumb .active { color: #5B58FF; font-weight: 500; }
 
-/* --- მარცხენა მხარე --- */
+
 #course-name {
     font-size: 32px;
     font-weight: 700;
@@ -85,7 +84,6 @@
     color: #4F4F4F;
 }
 
-/* --- აკორდეონები (Steps) --- */
 .acc-item {
     border-bottom: 1px solid #F2F2F2;
 }
@@ -164,7 +162,7 @@
     border-color: #5B58FF;
 }
 
-/* --- ფასის ბლოკი --- */
+
 .price-summary-card {
     background: #FFFFFF;
     border: 1px solid #F2F2F2;
@@ -220,7 +218,6 @@
     color: white;
 }
 
-/* --- Auth Alert --- */
 .auth-alert-small {
     background: #F8F9FB;
     border: 1px solid #E0E0E0;
@@ -246,7 +243,6 @@
     cursor: pointer;
 }
 
-/* --- პროგრესი და რეიტინგი --- */
 .completed-card {
     background: white;
     border: 1px solid #F2F2F2;
@@ -266,7 +262,7 @@
 .progress-info { margin: 20px 0; }
 .progress-bar-bg { background: #F2F2F2; height: 8px; border-radius: 10px; overflow: hidden; }
 
-/* პროგრესის ხაზი ლურჯ ფერში */
+
 .progress-bar-fill { 
     background: #5B58FF; 
     height: 100%; 
@@ -285,7 +281,6 @@
     font-weight: 600;
 }
 
-/* რეიტინგის სექცია და დიდი ვარსკვლავები */
 .rating-box { 
     text-align: center; 
     margin-top: 20px; 
@@ -300,7 +295,7 @@
 }
 
 .stars i { 
-    font-size: 36px; /* გაზრდილი ზომა */
+    font-size: 36px; 
     color: #E0E0E0; 
     cursor: pointer; 
     transition: transform 0.2s;
