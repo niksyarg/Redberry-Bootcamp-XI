@@ -14,7 +14,7 @@
     flex-grow: 1; 
 }
 
-/* 1. Categories */
+
 .filter-group h4 {
     font-size: 14px;
     color: #4F4F4F;
@@ -31,7 +31,7 @@
 .category-btn {
     display: flex;
     align-items: center;
-    gap: 8px; /* დაშორება აიკონსა და ტექსტს შორის */
+    gap: 8px; 
     padding: 8px 12px;
     background: #fff;
     border: 1px solid #E0E0E0;
@@ -41,7 +41,7 @@
     transition: 0.2s ease;
 }
 
-/* აიკონის ზომა ღილაკში */
+
 .category-btn img {
     width: 16px;
     height: 16px;
@@ -60,7 +60,6 @@
     font-weight: 600;
 }
 
-/* 2. Topics (Pills) */
 .topic-container {
     display: flex;
     flex-wrap: wrap;
@@ -87,7 +86,7 @@
     color: white; 
 }
 
-/* 3. Instructors */
+
 .instructor-container {
     display: flex;
     flex-direction: column;
@@ -120,7 +119,7 @@
     color: #4F4F4F;
 }
 
-/* 4. Pagination */
+
 .pagination {
     display: flex;
     justify-content: center;
@@ -155,7 +154,7 @@
     font-weight: 600;
 }
 
-/* Clear Filters Button */
+
 .btn-clear:hover {
     text-decoration: underline;
     opacity: 0.8;
